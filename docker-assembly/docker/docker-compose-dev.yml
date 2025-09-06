@@ -46,7 +46,9 @@ services:
       DEBUG_PORT: 8888
       PROXY_ADDRESS_FORWARDING: 'true'
 
-      KC_LOG_LEVEL: info,com.hivemaster:debug,org.apache.hc.client5:debug
+      KC_LOG_LEVEL: info
+      KC_LOG_LEVEL_COM_HIVEMASTER: debug
+      KC_LOG_LEVEL_FEIGN: debug
 
       IAM_HOST: localhost
       IAM_PORT: 8081

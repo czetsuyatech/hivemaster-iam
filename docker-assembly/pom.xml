@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.hivemaster</groupId>
@@ -15,6 +16,20 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.czetsuyatech.commons</groupId>
+      <artifactId>commons-persistence</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-core</artifactId>
+      <version>${feign.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-jackson</artifactId>
+      <version>${feign.version}</version>
+    </dependency>
+    <dependency>
       <groupId>com.hivemaster</groupId>
       <artifactId>hivemaster-jwt</artifactId>
       <version>${project.version}</version>
@@ -26,7 +41,7 @@
     </dependency>
     <dependency>
       <groupId>com.hivemaster</groupId>
-      <artifactId>hivemaster-iam-services-client</artifactId>
+      <artifactId>hivemaster-iam-services-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.hivemaster</groupId>
@@ -63,14 +78,31 @@
                 </artifactItem>
                 <artifactItem>
                   <groupId>com.hivemaster</groupId>
-                  <artifactId>hivemaster-iam-services-client</artifactId>
-                  <classifier>jar-with-dependencies</classifier>
+                  <artifactId>hivemaster-theme</artifactId>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/keycloak_providers</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>com.hivemaster</groupId>
-                  <artifactId>hivemaster-theme</artifactId>
+                  <artifactId>hivemaster-iam-services-api</artifactId>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/keycloak_providers</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.czetsuyatech.commons</groupId>
+                  <artifactId>commons-persistence</artifactId>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/keycloak_providers</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.github.openfeign</groupId>
+                  <artifactId>feign-core</artifactId>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/keycloak_providers</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.github.openfeign</groupId>
+                  <artifactId>feign-jackson</artifactId>
                   <overWrite>true</overWrite>
                   <outputDirectory>${project.build.directory}/keycloak_providers</outputDirectory>
                 </artifactItem>
@@ -116,7 +148,8 @@
               <goal>verify</goal>
             </goals>
             <configuration>
-              <verificationFile>${project.build.directory}/verifier/dockerfile.xml</verificationFile>
+              <verificationFile>${project.build.directory}/verifier/dockerfile.xml
+              </verificationFile>
             </configuration>
           </execution>
         </executions>
@@ -133,7 +166,9 @@
               <goal>wget</goal>
             </goals>
             <configuration>
-              <url>https://downloads.jboss.org/keycloak/${keycloak.version}/keycloak-${keycloak.version}.tar.gz</url>
+              <url>
+                https://downloads.jboss.org/keycloak/${keycloak.version}/keycloak-${keycloak.version}.tar.gz
+              </url>
               <outputFileName>keycloak-${keycloak.version}.tar.gz</outputFileName>
               <outputDirectory>${project.basedir}/downloads/</outputDirectory>
             </configuration>

@@ -7,7 +7,7 @@ services:
   keycloak-db:
     image: mysql:8.0
     ports:
-      - "33080:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: keycloak
@@ -51,10 +51,10 @@ services:
       DEBUG_PORT: 8888
       PROXY_ADDRESS_FORWARDING: 'true'
 
-      KC_LOG_LEVEL: info,com.hivemaster:debug,org.apache.hc.client5:debug
+      KC_LOG_CONSOLE_LEVEL: DEBUG
+      KC_LOG_LEVEL: com.hivemaster:DEBUG,feign:DEBUG
 
-      IAM_HOST: 192.168.1.8
-      IAM_PORT: 8091
-      IAM_BASE_PATH: /api
+      IAM_BASE_URL: http://192.168.1.8:8081
+      IAM_BASE_PATH: /api/v1
     networks:
       - hm-backend
