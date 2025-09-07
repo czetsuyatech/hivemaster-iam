@@ -19,7 +19,7 @@
     <hm-iam-services-client-dto.version>0.0.1-SNAPSHOT</hm-iam-services-client-dto.version>
 
     <jboss-logging.version>3.5.0.Final</jboss-logging.version>
-    <keycloak.version>24.0.2</keycloak.version>
+    <keycloak.version>26.3.3</keycloak.version>
     <mysql-connector.version>8.0.29</mysql-connector.version>
     <lombok.version>1.18.24</lombok.version>
     <jackson.version>2.13.3</jackson.version>

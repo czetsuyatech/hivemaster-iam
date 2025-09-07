@@ -4,7 +4,7 @@ FROM eclipse-temurin:21.0.8_9-jre as builder
 
 # Environment Variables
 
-ENV KEYCLOAK_VERSION 24.0.2
+ENV KEYCLOAK_VERSION 26.3.3
 ENV LAUNCH_JBOSS_IN_BACKGROUND 1
 ENV PROXY_ADDRESS_FORWARDING false
 ENV KEYCLOAK_HOME /opt/jboss/keycloak
