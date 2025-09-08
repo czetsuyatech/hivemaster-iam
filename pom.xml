@@ -20,7 +20,7 @@
 
     <jboss-logging.version>3.5.0.Final</jboss-logging.version>
     <keycloak.version>26.3.3</keycloak.version>
-    <mysql-connector.version>8.0.29</mysql-connector.version>
+    <mysql-connector.version>9.4.0</mysql-connector.version>
     <lombok.version>1.18.24</lombok.version>
     <jackson.version>2.13.3</jackson.version>
     <spring-boot.version>3.5.4</spring-boot.version>
