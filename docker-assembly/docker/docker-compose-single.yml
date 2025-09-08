@@ -53,6 +53,6 @@ services:
       KC_LOG_CONSOLE_LEVEL: DEBUG
       KC_LOG_LEVEL: com.hivemaster:DEBUG,feign:DEBUG
 
-      IAM_SERVICES_URL: http://192.168.68.63:8081
+      IAM_SERVICES_URL: http://192.168.68.62:8081
     networks:
       - hm-backend
