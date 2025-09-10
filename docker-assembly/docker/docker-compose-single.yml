@@ -5,14 +5,14 @@ networks:
 
 services:
   keycloak-db:
-    image: mysql:8.0
+    image: mysql:9.0
     ports:
-      - "33080:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: db_pass_123
+      MYSQL_DATABASE: keycloakservice
+      MYSQL_USER: keycloakservice
+      MYSQL_PASSWORD: keycloakservice
     command: mysqld --sql_mode=""
     networks:
       - hm-backend
@@ -32,11 +32,10 @@ services:
       - 8443:8443
     environment:
       KC_DB: mysql
-      KC_DB_URL_HOST: keycloak-db
-      KC_DB_URL_PORT: 3306
-      KC_DB_SCHEMA: keycloak
-      KC_DB_USERNAME: db_user
-      KC_DB_PASSWORD: db_pass_123
+      KC_DB_USERNAME: keycloakservice
+      KC_DB_PASSWORD: keycloakservice
+      KC_DB_SCHEMA: keycloakservice
+      KC_DB_URL: jdbc:mysql://keycloak-db:3306/keycloakservice
       KC_DB_URL_PROPERTIES: ?useSSL=false&allowPublicKeyRetrieval=true
 
       # Uncomment when in production
@@ -51,10 +50,9 @@ services:
       DEBUG_PORT: 8888
       PROXY_ADDRESS_FORWARDING: 'true'
 
-      KC_LOG_LEVEL: info,com.hivemaster:debug,org.apache.hc.client5:debug
+      KC_LOG_CONSOLE_LEVEL: DEBUG
+      KC_LOG_LEVEL: com.hivemaster:DEBUG,feign:DEBUG
 
-      IAM_HOST: 192.168.1.8
-      IAM_PORT: 8091
-      IAM_BASE_PATH: /api
+      IAM_SERVICES_URL: http://192.168.68.62:8081
     networks:
       - hm-backend

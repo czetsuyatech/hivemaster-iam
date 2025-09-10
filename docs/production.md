@@ -50,7 +50,7 @@ You will need to set the following environment variables correctly.
 
 | Application | Version |
 |-------------|---------|
-| Keycloak    | 22.0.1  |
+| Keycloak    | 24.0.2  |
 | MySQL       | 8.0.29  |
 
 _*These values can be changed in the Dockerfile file._

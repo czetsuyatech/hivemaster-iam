@@ -19,7 +19,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-czetsuyatech" ],
+    "realmRoles" : [ "default-roles-hivemaster" ],
     "notBefore" : 0,
     "groups" : [ ]
   } ]
