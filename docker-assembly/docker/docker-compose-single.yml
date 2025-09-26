@@ -1,19 +1,19 @@
-version: '3.3'
+name: hivemaster
 
 networks:
   hm-backend:
 
 services:
   keycloak-db:
-    image: mysql:9.0
+    image: postgres:16
     ports:
-      - "3306:3306"
+      - 5432:5432
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: keycloakservice
-      MYSQL_USER: keycloakservice
-      MYSQL_PASSWORD: keycloakservice
-    command: mysqld --sql_mode=""
+      LC_ALL: C.UTF-8
+      POSTGRES_DB: hivemaster
+      POSTGRES_USER: keycloakservice
+      POSTGRES_PASSWORD: keycloakservice
+      POSTGRES_PORT: 5432
     networks:
       - hm-backend
 
@@ -31,11 +31,11 @@ services:
       - 8080:8080
       - 8443:8443
     environment:
-      KC_DB: mysql
+      KC_DB: postgres
       KC_DB_USERNAME: keycloakservice
       KC_DB_PASSWORD: keycloakservice
-      KC_DB_SCHEMA: keycloakservice
-      KC_DB_URL: jdbc:mysql://keycloak-db:3306/keycloakservice
+      KC_DB_SCHEMA: public
+      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/hivemaster
       KC_DB_URL_PROPERTIES: ?useSSL=false&allowPublicKeyRetrieval=true
 
       # Uncomment when in production
